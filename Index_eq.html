@@ -94,8 +94,10 @@
 
     function checkAnswers() {
       questions.forEach((q, i) => {
-        const userInput = document.getElementById(`answer-${i}`).value;
+        const input = document.getElementById(`answer-${i}`);
         const resultSpan = document.getElementById(`result-${i}`);
+        const userInput = input.value;
+
         if (parseInt(userInput) === q.answer) {
           resultSpan.textContent = '✔️ Correct';
           resultSpan.style.color = 'green';
@@ -103,7 +105,13 @@
           resultSpan.textContent = `❌ Wrong (Answer: ${q.answer})`;
           resultSpan.style.color = 'red';
         }
+
+        // Disable the input field after checking
+        input.disabled = true;
       });
+
+      // Optionally disable the button to prevent multiple checks
+      document.getElementById('checkBtn').disabled = true;
     }
 
     loadQuestions();
