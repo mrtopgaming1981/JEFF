@@ -75,7 +75,6 @@
         num2 = getRandomInt(2, 10);
         answer = num1 * num2;
       } else {
-        // ensure we generate a clean division (whole number result)
         num2 = getRandomInt(2, 10);
         answer = getRandomInt(2, 10);
         num1 = num2 * answer;
@@ -104,8 +103,10 @@
 
     function checkAnswers() {
       questions.forEach((q, i) => {
-        const userInput = document.getElementById(`answer-${i}`).value;
+        const input = document.getElementById(`answer-${i}`);
         const resultSpan = document.getElementById(`result-${i}`);
+        const userInput = input.value;
+
         if (parseInt(userInput) === q.answer) {
           resultSpan.textContent = '✔️ Correct';
           resultSpan.style.color = 'green';
@@ -113,7 +114,13 @@
           resultSpan.textContent = `❌ Wrong (Answer: ${q.answer})`;
           resultSpan.style.color = 'red';
         }
+
+        // Disable the input field
+        input.disabled = true;
       });
+
+      // Disable the check button
+      document.getElementById('checkBtn').disabled = true;
     }
 
     loadQuestions();
