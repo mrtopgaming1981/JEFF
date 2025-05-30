@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Difficulty Selector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      height: 100vh;
+      background-color: #fdf6e3;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      margin-left: 50px;
+    }
+
+    .box-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .box {
+      display: flex;
+      align-items: center;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      padding: 10px 20px;
+      width: 200px;
+      text-decoration: none;
+      color: #000;
+      border-radius: 8px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .box:hover {
+      transform: scale(1.05);
+    }
+
+    .square {
+      width: 20px;
+      height: 20px;
+      background-color: grey;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+
+    .bee-image {
+      margin-left: 100px;
+    }
+
+    .bee-image img {
+      max-width: 600px;
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box-container">
+      <a class="box" href="https://example.com/easy" target="_blank">
+        <div class="square"></div>
+        Easy
+      </a>
+      <a class="box" href="https://example.com/medium" target="_blank">
+        <div class="square"></div>
+        Medium
+      </a>
+      <a class="box" href="https://example.com/hard" target="_blank">
+        <div class="square"></div>
+        Hard
+      </a>
+    </div>
+    <div class="bee-image">
+      <img src="https://www.shutterstock.com/image-photo/book-open-pages-close-up-600nw-2562942291.jpg" alt="Cute Bee">
+    </div>
+  </div>
+</body>
+</html>
