@@ -71,20 +71,17 @@
       let expression, answer;
 
       if (type === 1) {
-        // Multiplication of two medium-large numbers
         const num1 = getRandomInt(10, 20);
         const num2 = getRandomInt(5, 15);
         expression = `${num1} * ${num2}`;
         answer = num1 * num2;
       } else if (type === 2) {
-        // Division with whole number result
         const divisor = getRandomInt(2, 10);
         const quotient = getRandomInt(3, 12);
         const dividend = divisor * quotient;
         expression = `${dividend} / ${divisor}`;
         answer = quotient;
       } else {
-        // Two-step expression: (a + b) * c
         const a = getRandomInt(1, 10);
         const b = getRandomInt(1, 10);
         const c = getRandomInt(2, 8);
@@ -114,8 +111,10 @@
 
     function checkAnswers() {
       questions.forEach((q, i) => {
-        const userInput = document.getElementById(`answer-${i}`).value;
+        const input = document.getElementById(`answer-${i}`);
         const resultSpan = document.getElementById(`result-${i}`);
+        const userInput = input.value;
+
         if (parseInt(userInput) === q.answer) {
           resultSpan.textContent = '✔️ Correct';
           resultSpan.style.color = 'green';
@@ -123,7 +122,13 @@
           resultSpan.textContent = `❌ Wrong (Answer: ${q.answer})`;
           resultSpan.style.color = 'red';
         }
+
+        // Disable input after checking
+        input.disabled = true;
       });
+
+      // Optionally disable the button to prevent re-checking
+      document.getElementById('checkBtn').disabled = true;
     }
 
     loadQuestions();
