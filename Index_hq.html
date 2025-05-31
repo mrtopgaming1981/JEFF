@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Hard Math Questions</title>
   <style>
     body {
@@ -52,12 +52,20 @@
     #checkBtn:hover {
       background-color: #c62828;
     }
+
+    #scoreDisplay {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #e53935;
+    }
   </style>
 </head>
 <body>
   <h1>Hard Math Questions</h1>
   <div id="questions-container"></div>
   <button id="checkBtn" onclick="checkAnswers()">Check Answers</button>
+  <div id="scoreDisplay"></div>
 
   <script>
     const questions = [];
@@ -110,6 +118,8 @@
     }
 
     function checkAnswers() {
+      let score = 0;
+
       questions.forEach((q, i) => {
         const input = document.getElementById(`answer-${i}`);
         const resultSpan = document.getElementById(`result-${i}`);
@@ -118,17 +128,28 @@
         if (parseInt(userInput) === q.answer) {
           resultSpan.textContent = '✔️ Correct';
           resultSpan.style.color = 'green';
+          score++;
         } else {
           resultSpan.textContent = `❌ Wrong (Answer: ${q.answer})`;
           resultSpan.style.color = 'red';
         }
 
-        // Disable input after checking
         input.disabled = true;
       });
 
-      // Optionally disable the button to prevent re-checking
       document.getElementById('checkBtn').disabled = true;
+
+      // Display score on the page
+      const scoreDiv = document.getElementById('scoreDisplay');
+      scoreDiv.textContent = `Your score: ${score} / 10`;
+
+      // Save score to localStorage
+      localStorage.setItem('hardScore', score);
+
+      // Redirect after 15 seconds
+      setTimeout(() => {
+        window.location.href = 'https://mrtopgaming1981.github.io/JEFF/index.html'; // Change this URL to where you want to go
+      }, 15000);
     }
 
     loadQuestions();
