@@ -93,6 +93,8 @@
     }
 
     function checkAnswers() {
+      let score = 0;
+
       questions.forEach((q, i) => {
         const input = document.getElementById(`answer-${i}`);
         const resultSpan = document.getElementById(`result-${i}`);
@@ -101,6 +103,7 @@
         if (parseInt(userInput) === q.answer) {
           resultSpan.textContent = '✔️ Correct';
           resultSpan.style.color = 'green';
+          score++;
         } else {
           resultSpan.textContent = `❌ Wrong (Answer: ${q.answer})`;
           resultSpan.style.color = 'red';
@@ -109,11 +112,14 @@
         input.disabled = true;
       });
 
+      // Save score to localStorage
+      localStorage.setItem('easyScore', score);
+
       document.getElementById('checkBtn').disabled = true;
 
-      // Redirect to another page after 5 seconds
+      // Redirect after 5 seconds
       setTimeout(() => {
-        window.location.href = 'https://mrtopgaming1981.github.io/JEFF/index_mq.html'; // Change this to your desired URL
+        window.location.href = 'https://mrtopgaming1981.github.io/JEFF/index_mq.html';
       }, 5000);
     }
 
