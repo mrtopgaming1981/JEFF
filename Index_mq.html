@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Medium Math Questions</title>
   <style>
     body {
@@ -102,6 +102,8 @@
     }
 
     function checkAnswers() {
+      let score = 0;
+
       questions.forEach((q, i) => {
         const input = document.getElementById(`answer-${i}`);
         const resultSpan = document.getElementById(`result-${i}`);
@@ -110,6 +112,7 @@
         if (parseInt(userInput) === q.answer) {
           resultSpan.textContent = '✔️ Correct';
           resultSpan.style.color = 'green';
+          score++;
         } else {
           resultSpan.textContent = `❌ Wrong (Answer: ${q.answer})`;
           resultSpan.style.color = 'red';
@@ -118,11 +121,14 @@
         input.disabled = true;
       });
 
+      // Save score to localStorage
+      localStorage.setItem('mediumScore', score);
+
       document.getElementById('checkBtn').disabled = true;
 
       // Redirect to another site after 5 seconds
       setTimeout(() => {
-        window.location.href = 'https://mrtopgaming1981.github.io/JEFF/index_hq.html'; // Change this URL
+        window.location.href = 'https://mrtopgaming1981.github.io/JEFF/index_hq.html'; // Change this URL if needed
       }, 5000);
     }
 
