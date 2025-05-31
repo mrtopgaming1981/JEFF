@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Easy Math Questions</title>
   <style>
     body {
@@ -52,12 +52,20 @@
     #checkBtn:hover {
       background-color: #45a049;
     }
+
+    #scoreDisplay {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
   </style>
 </head>
 <body>
   <h1>Easy Math Questions</h1>
   <div id="questions-container"></div>
   <button id="checkBtn" onclick="checkAnswers()">Check Answers</button>
+  <div id="scoreDisplay"></div>
 
   <script>
     const questions = [];
@@ -112,8 +120,9 @@
         input.disabled = true;
       });
 
-      // Save score to localStorage
-      localStorage.setItem('easyScore', score);
+      // Display the score instead of saving it
+      const scoreDisplay = document.getElementById('scoreDisplay');
+      scoreDisplay.textContent = `Your score: ${score} / ${questions.length}`;
 
       document.getElementById('checkBtn').disabled = true;
 
