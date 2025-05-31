@@ -106,12 +106,15 @@
           resultSpan.style.color = 'red';
         }
 
-        // Disable the input field after checking
         input.disabled = true;
       });
 
-      // Optionally disable the button to prevent multiple checks
       document.getElementById('checkBtn').disabled = true;
+
+      // Redirect to another page after 5 seconds
+      setTimeout(() => {
+        window.location.href = 'https://mrtopgaming1981.github.io/JEFF/index_mq.html'; // Change this to your desired URL
+      }, 5000);
     }
 
     loadQuestions();
