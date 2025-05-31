@@ -52,12 +52,20 @@
     #checkBtn:hover {
       background-color: #e68900;
     }
+
+    #scoreDisplay {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
   </style>
 </head>
 <body>
   <h1>Medium Math Questions</h1>
   <div id="questions-container"></div>
   <button id="checkBtn" onclick="checkAnswers()">Check Answers</button>
+  <div id="scoreDisplay"></div>
 
   <script>
     const questions = [];
@@ -121,14 +129,15 @@
         input.disabled = true;
       });
 
-      // Save score to localStorage
-      localStorage.setItem('mediumScore', score);
+      // Display the score instead of saving it
+      const scoreDisplay = document.getElementById('scoreDisplay');
+      scoreDisplay.textContent = `Your score: ${score} / ${questions.length}`;
 
       document.getElementById('checkBtn').disabled = true;
 
       // Redirect to another site after 5 seconds
       setTimeout(() => {
-        window.location.href = "https://mrtopgaming1981.github.io/JEFF/Index_hq.html"; // Change this URL if needed
+        window.location.href = "https://mrtopgaming1981.github.io/JEFF/Index_hq.html";
       }, 5000);
     }
 
